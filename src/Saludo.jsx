@@ -1,9 +1,16 @@
 function Saludo() {
+
+    let nombre = "Jesus";
+
+    let a = 10;
+    let b = 3;
+    let res = a+b;
+
     return (
-        <div>
-            <h1>Hola Soy Brayan desde componente saludo</h1>
-            <h2>Saludando...</h2>
-        </div>
+        <>
+            <h1>Hola {nombre} desde variable</h1>
+            <p>La suma total de {a} + {b} es: {res}</p>
+        </>
     )
 }
 

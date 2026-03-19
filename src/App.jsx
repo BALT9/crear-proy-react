@@ -1,15 +1,19 @@
+import Cards from "./components/Cards"
+import Menu from "./components/Menu"
+import Portada from "./components/Portada"
 import Saludo from "./Saludo"
 
 function App() {
 
   return (
     <>
-      <p className="bg-red-500 h-40 m-50">
-        Hola Brayan
-      </p>
-      <Saludo />
-      <Saludo > </Saludo>
+      <Menu />
+      <Portada />
+      <Cards />
 
+      <p>Hola brayan</p>
+      
+      <Saludo></Saludo>
     </>
   )
 }
