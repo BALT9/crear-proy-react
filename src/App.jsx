@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react"
 
+// Fetch
 import { getData } from "./api/api";
+// Axios
+import { getDataAxios } from "./api/axios";
 
 function App() {
 
@@ -12,8 +15,20 @@ function App() {
     console.log(data);
   }
 
+  async function getUserAxios() {
+    try {
+      const data = await getDataAxios();
+      setUser(data)
+    } catch (error) {
+      console.error("Error: ", error);
+    }
+  }
+
+
+
   useEffect(() => {
-    getUser()
+    // getUser()
+    getUserAxios()
   }, [])
 
   return (
