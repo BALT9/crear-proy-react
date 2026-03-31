@@ -1,19 +1,46 @@
-import Cards from "./components/Cards"
-import Menu from "./components/Menu"
-import Portada from "./components/Portada"
-import Saludo from "./Saludo"
+import { useEffect, useState } from "react"
+
+import { getData } from "./api/api";
 
 function App() {
 
+  const [user, setUser] = useState([]);
+
+  async function getUser() {
+    const data = await getData();
+    setUser(data);
+    console.log(data);
+  }
+
+  useEffect(() => {
+    getUser()
+  }, [])
+
   return (
     <>
-      <Menu />
-      <Portada />
-      <Cards />
 
-      <p>Hola brayan</p>
-      
-      <Saludo></Saludo>
+      <h1>Users con Axios</h1>
+
+      <h1>Users con Fetch</h1>
+
+      <div className="flex flex-wrap justify-center">
+        {
+          user.map((x) => (
+            <div key={x.id} className="w-50 h-50 m-5 shadow-lg rounded-md">
+              <h1 className="text-red-500">{x.name}</h1>
+              <p>{x.email}</p>
+              <p className="bg-blue-500 py-2 px-5 rounded-full">{x.address.street}</p>
+              <div className="p-4 flex">
+                <button className="mx-2 bg-yellow-500 text-white rounded-md px-3">Editar</button>
+                <button className="mx-2 bg-red-500 text-white rounded-md px-3">Eliminar</button>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <pre>{JSON.stringify(user, null, 2)}</pre>
+
     </>
   )
 }
